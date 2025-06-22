@@ -2,7 +2,7 @@ import { DataSource } from 'typeorm';
 import { resolve } from 'path';
 import { config as loadEnv } from 'dotenv';
 
-// 개발 환경에 한해 .env
+// 로컬 환경에서 마이그레이션 파일 생성시 참조용
 loadEnv({ path: resolve(process.cwd(), '.env') });
 
 export const AppDataSource = new DataSource({
