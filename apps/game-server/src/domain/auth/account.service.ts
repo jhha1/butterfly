@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DataSource, Repository } from 'typeorm';
 import { Account } from './entities/account.entity';
-import { Platform, PlatformType } from './entities/platform.entity';
+import { Platform } from './entities/platform.entity';
 import { ulid } from 'ulid';
 import { InjectRepository } from '@nestjs/typeorm';
 
@@ -24,7 +24,7 @@ export class AccountService {
    */
   async getOrCreateAccount(
     platformId: string,
-    platformType: PlatformType,
+    platformType: number,
   ): Promise<AccountResult> {
     // 플랫폼-계정 관계 조회
     let platform = await this.platRepo.findOne({ where: { platformId }, relations: ['account'] });

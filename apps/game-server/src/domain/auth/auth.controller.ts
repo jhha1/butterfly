@@ -21,14 +21,4 @@ export class AuthController {
     await this.authService.unregister(request.accountId);
     return {};
   }
-
- // Hot path: skipping DTO, use raw proto object directly (no DTO mapping)
-//  @GrpcMethod('AuthService', 'heartBeat')
-//  async validate(request: { sessionToken: string }): Promise<{ status: { code: number; message?: string; timestamp: number }; valid: boolean; accountId?: string; playerId?: number }> {
-//    const session = await this.authService.validateSession(request.sessionToken);
-//    if (!session) {
-//      return { status: { code: 1, message: 'Invalid', timestamp: Date.now() }, valid: false };
-//    }
-//    return { status: { code: 0, timestamp: Date.now() }, valid: true, accountId: session.uid, playerId: session.playerId };
-//  }
 }

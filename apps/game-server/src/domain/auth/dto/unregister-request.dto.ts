@@ -1,3 +1,3 @@
 export class UnregisterRequestDto {
-    accountId: string;
+    accountId!: string;
   }

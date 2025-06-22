@@ -1,8 +1,6 @@
 import { Entity, PrimaryColumn, Column, ManyToOne } from 'typeorm';
 import { Account } from './account.entity';
 
-export type PlatformType = 'google' | 'apple' | 'guest';
-
 @Entity('platforms')
 export class Platform {
   /**
@@ -10,17 +8,17 @@ export class Platform {
    * primary key
    */
   @PrimaryColumn()
-  platformId: string;
+  platformId!: string;
 
   /**
    * 플랫폼 타입 (google, apple, guest)
    */
-  @Column({ type: 'enum', enum: ['google', 'apple', 'guest'] })
-  platformType: PlatformType;
+  @Column({ type: 'int' })
+  platformType!: number;
 
   /**
    * 이 Credential이 속한 Account
    */
   @ManyToOne(() => Account, account => account.platforms, { onDelete: 'CASCADE' })
-  account: Account;
+  account!: Account;
 }
