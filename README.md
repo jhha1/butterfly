@@ -10,7 +10,6 @@
 
 <ul>
   <li><strong>game-server</strong> – gRPC service under active development</li>
-  <em style="color:gray">(Note: This service is still in early development and may not function reliably yet)</em></li>
   <li><strong>admin-server</strong> – HTTP API skeleton</li>
   <li><strong>chat-server</strong> – WebSocket skeleton</li>
 </ul>
@@ -66,7 +65,8 @@ docker-compose up -d
 <h2>Status</h2>
 <p>
   <code>admin-server</code> and <code>chat-server</code> are placeholders. Current work focuses on the
-  game server and the shared libraries under <code>libs/</code>.
+  game server and the shared libraries under <code>libs/</code>.</br>
+  <em style="color:gray">This service is still in early development and may not function reliably yet.</em>
 </p>
 
 </body>
