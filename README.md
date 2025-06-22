@@ -22,8 +22,8 @@
 <h2>Repository Layout</h2>
 <pre><code>apps/
   game-server/      # main gRPC server (개발중)
-  admin-server/     # not implemented yet (아직 미구현)
-  chat-server/      # not implemented yet (아직 미구현)
+  admin-server/     # not implemented yet (구현예정)
+  chat-server/      # not implemented yet (구현예정)
 </code></pre>
 <pre><code>libs/
   auth/             # Session and jwt utilities
