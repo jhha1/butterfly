@@ -24,12 +24,13 @@
   game-server/      # main gRPC server
   admin-server/     # not implemented yet
   chat-server/      # not implemented yet
-
-libs/
+</code></pre>
+<pre><code>libs/
   auth/             # Session and jwt utilities
   datahub/          # DB, Redis, in-memory cache modules
   common/           # shared placeholders
-environments/local/ # docker-compose for local MySQL & Redis
+</code></pre>
+<pre><code>environments/local/ # simple docker-compose for local MySQL & Redis
 </code></pre>
 
 <h2>Quick Start</h2>
