@@ -30,7 +30,8 @@
   datahub/          # DB, Redis, in-memory cache modules
   common/           # shared placeholders
 </code></pre>
-<pre><code>environments/local/ # simple docker-compose for local MySQL & Redis
+<pre><code>environments/
+  local/ # simple docker-compose for local MySQL & Redis
 </code></pre>
 
 <h2>Quick Start</h2>
