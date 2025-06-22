@@ -1,0 +1,48 @@
+name: Proto Build & Publish
+
+on:
+  push:
+    branches: [ '**' ]
+
+jobs:
+  publish-proto:
+    if: contains(github.ref, 'proto-build')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build & Copy Proto
+        run: npm run build
+
+      - name: Push to butterfly-IDL repo
+        env:
+          IDL_REPO_TOKEN: ${{ secrets.IDL_REPO_TOKEN }}
+        run: |
+          git config --global user.name  "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # IDL 레포 클론
+          git clone https://x-access-token:${IDL_REPO_TOKEN}@github.com/jhha1/butterfly-IDL.git idl
+          
+          # 기존 내용 삭제
+          rm -rf idl/*
+
+          # 빌드된 proto 복사
+          cp -R dist/apps/game-server/grpc/proto/* idl/
+
+          cd idl
+          git checkout -B game-dev
+
+          git add .
+          git commit -m "proto-build: update definitions"
+          git push origin game-dev --force

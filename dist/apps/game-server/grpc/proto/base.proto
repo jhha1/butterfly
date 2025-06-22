@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package jhha.butterfly.v1;
+
+message ResponseStatus {
+  uint32 code = 1;
+  optional string message = 2;
+  uint32 timestamp = 3;
+}

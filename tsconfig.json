@@ -1,29 +1,40 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "module": "commonjs",
-    "declaration": true,
-    "removeComments": true,
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "strict": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es2022",
-    "sourceMap": true,
-    "outDir": "./dist",
-    "baseUrl": "./",
-    "incremental": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2022", "dom"],
     "skipLibCheck": true,
-    "strictNullChecks": true,
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "noFallthroughCasesInSwitch": false,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
     "paths": {
-      "@lib/common": [
+      "@libs/auth": [
+        "libs/auth/"
+      ],
+      "@libs/auth/*": [
+        "libs/auth/*"
+      ],
+      "@libs/datahub": [
+        "libs/datahub/"
+      ],
+      "@libs/datahub/*": [
+        "libs/datahub/*"
+      ],
+      "@libs/common": [
         "libs/common/src"
       ],
-      "@lib/common/*": [
+      "@libs/common/*": [
         "libs/common/src/*"
-      ]
+      ],
     }
-  }
+  },
+  "exclude": ["node_modules", "tmp"]
 }

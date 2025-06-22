@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package jhha.butterfly.v1;
+
+import "google/protobuf/empty.proto";
+import "base.proto";
+
+service AuthService {
+  // 로그인: 게임 내 계정 인증 포함, 논리적 단일 서버 가정 (유저가 플레이하는 서버가 하나)
+  rpc Login(LoginRequest) returns (LoginResponse);
+  
+  // 탈퇴: 게임 내 계정 단위
+  rpc Unregister(UnregisterRequest) returns (google.protobuf.Empty);
+}
+
+message LoginRequest {
+  string platformId = 1; // 플랫폼 Id
+  AuthPlatform platformType = 2;
+}
+
+message LoginResponse {
+  ResponseStatus status = 1;
+  string accountId = 2; // 게임 내 계정. ulid.
+  string playerId = 3; // 마지막 플레이한 캐릭터 Id. ulid.
+  string sessionToken = 4;
+}
+
+enum AuthPlatform {
+  AUTH_PLATFORM_UNSPECIFIED = 0; // 미사용
+  AUTH_PLATFORM_GUEST = 1;       // 게스트
+  AUTH_PLATFORM_APPLE = 2;       // 애플
+  AUTH_PLATFORM_GOOGLE = 3;      // 구글
+}
+
+message UnregisterRequest {
+  string accountId = 1;
+}

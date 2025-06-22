@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: butterfly-mysql
+    restart: unless-stopped
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: game
+      MYSQL_USER: butterfly
+      MYSQL_PASSWORD: butterflypass
+      TZ: UTC
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    networks:
+      - backend
+
+  redis:
+    image: redis:7-alpine
+    container_name: butterfly-redis
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+    networks:
+      - backend
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - redis_data:/data
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+
+volumes:
+  mysql_data:
+  redis_data:
+
+networks:
+  backend:
