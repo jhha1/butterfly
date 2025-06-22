@@ -1,24 +1,14 @@
-# 1. 베이스 이미지
 FROM node:18-alpine AS builder
-
-# 2. 워킹 디렉토리 설정
 WORKDIR /usr/src/app
 
-# 3. 종속성 복사 & 설치
+# 종속성 복사 & 설치
 COPY package.json pnpm-lock.yaml ./
 RUN npm install -g pnpm && pnpm install
 
-# 4. 소스 복사, 빌드 & 프로토 복사
-COPY . .
-RUN pnpm run build:game    # 빌드 & proto:build 스크립트를 실행
-
-# 5. 실제 컨테이너 런타임용 이미지
-FROM node:18-alpine
-WORKDIR /usr/src/app
-
-# 6. 빌드 결과만 복사
+# 소스 빌드, 프로토 복사. proto:build 스크립트 실행
+COPY ..
+RUN pnpm run build:game    
 COPY --from=builder /usr/src/app/dist ./dist
 COPY --from=builder /usr/src/app/node_modules ./node_modules
 
-# 7. 프로덕션 실행
 CMD ["node", "dist/apps/game-server/main.js"]
