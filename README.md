@@ -10,8 +10,9 @@
 
 <ul>
   <li><strong>game-server</strong> – gRPC service under active development</li>
-  <li><strong>admin-server</strong> – HTTP API skeleton (not implemented yet)</li>
-  <li><strong>chat-server</strong> – WebSocket skeleton (not implemented yet)</li>
+  <em style="color:gray">(Note: This service is still in early development and may not function reliably yet)</em></li>
+  <li><strong>admin-server</strong> – HTTP API skeleton</li>
+  <li><strong>chat-server</strong> – WebSocket skeleton</li>
 </ul>
 
 <p>
@@ -32,6 +33,9 @@
 </code></pre>
 <pre><code>environments/
   local/ # simple docker-compose for local MySQL & Redis
+</code></pre>
+<pre><code>.github/
+  workflows/ # actions. GitOps CI/CD YAML will be added later
 </code></pre>
 
 <h2>Quick Start</h2>
