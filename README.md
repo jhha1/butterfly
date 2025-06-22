@@ -21,9 +21,9 @@
 
 <h2>Repository Layout</h2>
 <pre><code>apps/
-  game-server/      # main gRPC server
-  admin-server/     # not implemented yet
-  chat-server/      # not implemented yet
+  game-server/      # main gRPC server (개발중)
+  admin-server/     # not implemented yet (아직 미구현)
+  chat-server/      # not implemented yet (아직 미구현)
 </code></pre>
 <pre><code>libs/
   auth/             # Session and jwt utilities
@@ -65,7 +65,7 @@ docker-compose up -d
 <h2>Status</h2>
 <p>
   <code>admin-server</code> and <code>chat-server</code> are placeholders. Current work focuses on the
-  game server and the shared libraries under <code>libs/</code>.</br>
+  game server and the shared libraries under <code>libs/</code>.</br></br>
   <em style="color:gray">This service is still in early development and may not function reliably yet.</em>
 </p>
 
