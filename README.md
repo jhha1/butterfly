@@ -9,9 +9,9 @@
 </p>
 
 <ul>
-  <li><strong>game-server</strong> – gRPC service under active development</li>
+  <li><strong>game-server</strong> – https (protobuf msg) service under active development</li>
   <li><strong>admin-server</strong> – rest API skeleton</li>
-  <li><strong>chat-server</strong> – grpc streaming skeleton</li>
+  <li><strong>chat-server</strong> – web socket skeleton</li>
 </ul>
 
 <p>
