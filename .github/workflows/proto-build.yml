@@ -1,3 +1,4 @@
+# 변경된 proto를 클라-서버 공유 butterfly-IDL repo로 push
 name: Proto Build & Publish
 
 on:
@@ -38,7 +39,7 @@ jobs:
           rm -rf idl/*
 
           # 빌드된 proto 복사
-          cp -R dist/apps/game-server/grpc/proto/* idl/
+          cp -R dist/packages/outgame/grpc/proto/* idl/
 
           cd idl
           git checkout -B game-dev
