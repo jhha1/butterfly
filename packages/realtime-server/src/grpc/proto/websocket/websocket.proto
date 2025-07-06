@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package jhha.butterfly.websocket.v1;
+
+// WebSocket으로 전송되는 메시지들
+message SendStatusRequest {
+  string roomId = 1;
+  string playerId = 2;
+  repeated PlayerPosition players = 3;
+  int64 timestamp = 4;
+}
+
+message SendStatusResponse {
+  string roomId = 1;
+  repeated PlayerPosition players = 2;
+  int64 timestamp = 3;
+  string status = 4; // "success", "error"
+  string message = 5; // 에러 메시지 (있는 경우)
+}
+
+message PlayerPosition {
+  int32 playerIndex = 1; // 0-10 (축구가정시, 11명 플레이어)
+  Position position = 2;
+  string action = 3; // "run", "kick", "pass", "idle"
+  float speed = 4; // 현재 속도
+}
+
+message Position {
+  float x = 1;
+  float y = 2;
+  float z = 3; // 높이 (점프, 헤딩 등)
+}
+
+// 기타 WebSocket 메시지들
+message JoinRoomRequest {
+  string roomId = 1;
+  string playerId = 2;
+  string playerToken = 3;
+}
+
+message JoinRoomResponse {
+  bool success = 1;
+  string message = 2;
+  RoomInfo room = 3;
+}
+
+message RoomInfo {
+  string roomId = 1;
+  int32 playerCount = 2;
+  repeated string playerIds = 3;
+  string status = 4; // "waiting", "playing", "ended"
+} 
