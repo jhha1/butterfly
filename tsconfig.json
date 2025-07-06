@@ -3,6 +3,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "sourceMap": true,
+   // "inlineSources": true, //  번들 안에 원본 TS 코드 포함
     "declaration": false,
     "moduleResolution": "node",
     "strict": true,
@@ -10,30 +11,30 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2015",
-    "module": "esnext",
     "lib": ["es2022", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "module": "commonjs",
     "paths": {
-      "@libs/auth": [
-        "libs/auth/"
+      "@packages/common": [
+        "packages/common/src"
       ],
-      "@libs/auth/*": [
-        "libs/auth/*"
+      "@packages/common/*": [
+        "packages/common/src/*"
       ],
-      "@libs/datahub": [
-        "libs/datahub/"
+      "@packages/game-server": [
+        "packages/game-server/src"
       ],
-      "@libs/datahub/*": [
-        "libs/datahub/*"
+      "@packages/game-server/*": [
+        "packages/game-server/src/*"
       ],
-      "@libs/common": [
-        "libs/common/src"
+      "@packages/realtime-server": [
+        "packages/realtime-server/src"
       ],
-      "@libs/common/*": [
-        "libs/common/src/*"
-      ],
+      "@packages/realtime-server/*": [
+        "packages/realtime-server/src/*"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
