@@ -1,33 +1,35 @@
 const fs = require('fs');
 const path = require('path');
 
-const domainName = process.argv[2];
-if (!domainName) {
-  console.error('도메인 이름을 입력하세요. 예: node gen-domain auth');
+const server = process.argv[2];
+const moduleName = process.argv[3];
+if (!server || !moduleName) {
+  console.error('대상 서버와 모듈 이름을 입력하세요. 예: node gen-module game-server auth');
   process.exit(1);
 }
+const isGrpc = process.argv[4] === 'grpc';
 
-const basePath = path.join(__dirname, '../../apps/game-server/src/domain', domainName);
+const basePath = isGrpc ? path.join(__dirname, `../packages/${server}/src/grpc/`, moduleName) : path.join(__dirname, `../packages/${server}/src/modules`, moduleName);
 const dtoPath = path.join(basePath, 'dto');
 const entitiesPath = path.join(basePath, 'entities');
 
-const pascal = domainName
+const pascal = moduleName
   .split('-')
   .map(word => word.charAt(0).toUpperCase() + word.slice(1))
   .join('');
 
 const files = {
-  [`${domainName}.controller.ts`]: `import { Controller } from '@nestjs/common';
+  [`${moduleName}.controller.ts`]: `import { Controller } from '@nestjs/common';
 
-@Controller('${domainName}')
+@Controller('${moduleName}')
 export class ${pascal}Controller {}`,
-  [`${domainName}.service.ts`]: `import { Injectable } from '@nestjs/common';
+  [`${moduleName}.service.ts`]: `import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class ${pascal}Service {}`,
-  [`${domainName}.module.ts`]: `import { Module } from '@nestjs/common';
-import { ${pascal}Service } from './${domainName}.service';
-import { ${pascal}Controller } from './${domainName}.controller';
+  [`${moduleName}.module.ts`]: `import { Module } from '@nestjs/common';
+import { ${pascal}Service } from './${moduleName}.service';
+import { ${pascal}Controller } from './${moduleName}.controller';
 
 @Module({
   controllers: [${pascal}Controller],
@@ -58,4 +60,4 @@ Object.entries(files).forEach(([fileName, content]) => {
   createFile(path.join(basePath, fileName), content);
 });
 
-console.log(`'${domainName}' 도메인 스캐폴드 완료`);
+console.log(`'${moduleName}' 모듈 스캐폴드 완료`);
