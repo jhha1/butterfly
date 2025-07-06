@@ -22,7 +22,6 @@ module.exports = [
       'node_modules/**',
       '**/*.config.js',
       '.github/**',
-      'apps/hive-fe/eslint-rules/**',
     ],
   },
   ...compat.extends('plugin:@typescript-eslint/recommended', 'prettier'),
