@@ -1,4 +1,4 @@
-# Butterfly 게임 매칭 시스템
+# Butterfly
 
 Butterfly는 NestJS 기반의 실시간 게임 서버로, 멀티플레이어 게임을 위한 로비, 매칭, 실시간 플레이 기능을 만들고 있습니다.
 
