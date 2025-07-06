@@ -1,0 +1,14 @@
+FROM node:18-alpine AS builder
+WORKDIR /usr/src/app
+
+# 종속성 복사 & 설치
+COPY package.json pnpm-lock.yaml ./
+RUN npm install -g pnpm && pnpm install
+
+# 소스 빌드, 프로토 복사. proto:build 스크립트 실행
+COPY ..
+RUN pnpm run build:game    
+COPY --from=builder /usr/src/app/dist ./dist
+COPY --from=builder /usr/src/app/node_modules ./node_modules
+
+CMD ["node", "dist/packages/outgame/main.js"]
