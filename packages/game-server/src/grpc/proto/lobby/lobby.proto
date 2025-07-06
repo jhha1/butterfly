@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package jhha.butterfly.v1;
+
+import "base.proto";
+import "matching/matching.proto";
+
+message LobbyRefreshRequest {
+  string playerId = 1;
+}
+
+message LobbyRefreshResponse {
+  ResponseStatus status = 1;
+  string newInfo = 2;
+  optional RoomInfo matchInfo = 3; // 매치 정보가 있는 경우 포함
+}
+
+service LobbyService {
+  rpc LobbyRefresh (LobbyRefreshRequest) returns (LobbyRefreshResponse);
+} 

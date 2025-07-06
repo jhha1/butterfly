@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package jhha.butterfly.v1;
+
+import "google/protobuf/empty.proto";
+import "base.proto";
+
+service MatchingService {
+  rpc CandidateList(CandidateListRequest) returns (CandidateListResponse); // 유저에 적합한 매치 리스트를 산정하여 리턴한다고 가정
+  rpc RequestMatch(RequestMatchRequest) returns (RequestMatchResponse); // 유저가 한명을 골라 매치 요청 - 룸 생성 및 룸 정보 응답
+  rpc AcceptMatch(AcceptMatchRequest) returns (AcceptMatchResponse); // 타겟 유저가 매치 수락 - 레디스에서 룸 정보 조회 및 응답
+}
+
+message CandidateListRequest {
+  string playerId = 1;
+}
+
+message CandidateListResponse {
+  ResponseStatus status = 1;
+  repeated Candidate list = 2;
+}
+
+message RequestMatchRequest {
+  string playerId = 1;
+  string targetPlayerId = 2;
+}
+
+message RequestMatchResponse {
+  ResponseStatus status = 1;
+  int32 isAble = 2; // 상대가 아직도 매치가능 상태인가 
+  RoomInfo roomInfo = 3; // 생성된 룸 정보 (매치 요청 시 룸 생성)
+  int32 expire_at = 4; // 요청 만료 시간 
+}
+
+message AcceptMatchRequest {
+  string playerId = 1;
+  string targetPlayerId = 2;
+}
+
+message AcceptMatchResponse {
+  ResponseStatus status = 1;
+  int32 isAble = 2; // 요청 상대가 아직도 매치가능 상태인가 
+  RoomInfo roomInfo = 3; // 레디스에서 조회한 룸 정보
+}
+
+message RoomInfo {
+  string roomId = 1; // 룸 고유 ID
+  string matchId = 2; // 매치 고유 ID
+  string socketUrl = 3; // 웹소켓 연결 URL
+  string player1Id = 4; // 플레이어 1 ID
+  string player2Id = 5; // 플레이어 2 ID
+  int64 createdAt = 6; // 룸 생성 시간 (타임스탬프)
+  int32 maxPlayers = 7; // 최대 플레이어 수 (확장성을 위해)
+  string gameMode = 8; // 게임 모드 (1v1, 2v2 등)
+}
+
+message Candidate {
+  string playerId = 1;
+  string profile = 2; // 유저 프로필
+  string extraInfo = 3; // 매치에 필요한 기타 정보 (기획에 따라 달라짐)
+  int32 latency = 4; // 네트웍 레이턴시 (초저지연 보장해야하므로, 레이턴시를 UI에 보여준다 가정)
+}

@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package jhha.butterfly.v1;
+
+import "base.proto";
+
+// ingame 서버에서 제공하는 서비스
+service IngameService {
+  rpc CreateRoom(CreateRoomRequest) returns (CreateRoomResponse);
+  rpc GetRoomInfo(GetRoomInfoRequest) returns (GetRoomInfoResponse);
+}
+
+// outgame 서버에서 제공하는 서비스 (ingame에서 호출)
+service OutgameService {
+  rpc GameResult(GameResultRequest) returns (GameResultResponse);
+}
+
+message CreateRoomRequest {
+  string player1Id = 1;
+  string player2Id = 2;
+  string matchId = 3;
+  string roomId = 4;
+}
+
+message CreateRoomResponse {
+  ResponseStatus status = 1;
+  string roomId = 2;
+  string connectionUrl = 3; // WebSocket 연결 URL
+}
+
+message GetRoomInfoRequest {
+  string roomId = 1;
+}
+
+message GetRoomInfoResponse {
+  ResponseStatus status = 1;
+  string roomId = 2;
+  int32 playerCount = 3;
+  string gameStatus = 4; // waiting, playing, ended
+}
+
+message GameResultRequest {
+  string roomId = 1;
+  repeated string players = 2;
+  GameScore score = 3;
+  string endReason = 4;
+  int64 duration = 5;
+  int64 timestamp = 6;
+}
+
+message GameResultResponse {
+  ResponseStatus status = 1;
+}
+
+message GameScore {
+  int32 player1 = 1;
+  int32 player2 = 2;
+} 
