@@ -15,8 +15,6 @@ Butterfly는 NestJS 기반의 실시간 게임 서버로, 멀티플레이어 게
   - 실시간 게임 플레이
   - 게임 룸 상태 동기화
   - 플레이어 간 통신
- 
-- **game-server** 와 **realtime-server** 는 별도로 떠있으며, 통신은 grpc 사용 (현재 unary 방식이라 streaming으로 변경해야함) 
 
 - **common**: 공통 라이브러리
   - JWT 기반 인증
@@ -28,6 +26,9 @@ Butterfly는 NestJS 기반의 실시간 게임 서버로, 멀티플레이어 게
 - **MySQL**: 사용자 계정, 플레이어 정보
 - **Redis**: 세션 관리, 게임 룸 상태
 
+### MSA 
+- **game-server** 와 **realtime-server** 는 별도로 떠있으며, 추후 k8s 클러스터에서 네임스페이스로 구분하여 MSA로 구성해보고자 함 (공부목적)
+- grpc 통신 (현재 unary 방식이라 streaming으로 변경해야함) 
 
 ## ⚠️ 현재 상태 및 알려진 이슈
 
