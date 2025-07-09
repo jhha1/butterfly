@@ -4,13 +4,13 @@ package jhha.butterfly.v1;
 
 import "base.proto";
 
-// ingame 서버에서 제공하는 서비스
+// 실시간 서버에서 제공하는 서비스
 service IngameService {
   rpc CreateRoom(CreateRoomRequest) returns (CreateRoomResponse);
   rpc GetRoomInfo(GetRoomInfoRequest) returns (GetRoomInfoResponse);
 }
 
-// outgame 서버에서 제공하는 서비스 (ingame에서 호출)
+// 게임 서버에서 제공하는 서비스 (실시간 서버에서 호출)
 service OutgameService {
   rpc GameResult(GameResultRequest) returns (GameResultResponse);
 }
