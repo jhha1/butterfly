@@ -9,6 +9,7 @@ export class LobbyService {
     private readonly redisService: RedisCacheService,
   ) {}
 
+  // todo. 함수 정리
   async lobbyRefresh(request: LobbyRefreshRequestDto): Promise<LobbyRefreshResponseDto> {
     try {
       const { playerId } = request;
