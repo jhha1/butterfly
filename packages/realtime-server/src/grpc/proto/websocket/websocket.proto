@@ -19,7 +19,7 @@ message SendStatusResponse {
 }
 
 message PlayerPosition {
-  int32 playerIndex = 1; // 0-10 (축구가정시, 11명 플레이어)
+  int32 playerIndex = 1; // 0-10 (11명 플레이어 가정)
   Position position = 2;
   string action = 3; // "run", "kick", "pass", "idle"
   float speed = 4; // 현재 속도
