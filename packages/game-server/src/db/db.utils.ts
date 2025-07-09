@@ -21,29 +21,3 @@ export function buildTypeOrmConfig(env: NodeJS.ProcessEnv): TypeOrmModuleOptions
     logging: env.DB_LOGGING === 'true',
   };
 }
-
-/**
- * e2e 테스트용 TypeORM 설정
- * 테스트 환경에서는 synchronize를 true로 설정하여 스키마를 자동으로 생성
- */
-export function buildTestTypeOrmConfig(env: NodeJS.ProcessEnv): TypeOrmModuleOptions {
-  return {
-    type: 'mysql',
-    host: env.DB_HOST || 'localhost',
-    port: parseInt(env.DB_PORT ?? '3306'),
-    username: env.DB_USERNAME || 'butterfly',
-    password: env.DB_PASSWORD || 'butterflypass',
-    database: env.DB_NAME || 'game_test',
-    autoLoadEntities: true,
-    synchronize: true, // 테스트 환경에서는 true로 설정
-    dropSchema: true, // 테스트 시작 시 스키마를 삭제하고 다시 생성
-    retryAttempts: 3,
-    retryDelay: 1000,
-    extra: {
-        connectionLimit: 10,
-        queueLimit: 100,
-        connectTimeout: 5000,
-    },
-    logging: false, // 테스트에서는 로깅 비활성화
-  };
-}
