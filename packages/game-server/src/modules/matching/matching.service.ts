@@ -41,6 +41,7 @@ export class MatchingService {
     }
   }
 
+  // todo. 함수 간결하게 분리 정리
   async requestMatch(request: RequestMatchRequestDto): Promise<RequestMatchResponseDto> {
     try {
       // 상대방이 매치 가능한지 확인
