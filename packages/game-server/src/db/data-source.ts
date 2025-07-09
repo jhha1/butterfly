@@ -8,6 +8,7 @@ import { Player } from '../modules/player/entities/player.entity';
 // 로컬 환경에서 마이그레이션 파일 생성시 참조용
 loadEnv({ path: resolve(process.cwd(), '.env') });
 
+// todo. entities 하나씩 넣지 않도록 
 export const AppDataSource = new DataSource({
   type: 'mysql',
   host: process.env.DB_HOST,
