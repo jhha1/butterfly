@@ -46,12 +46,12 @@ Butterfly는 NestJS 기반의 실시간 게임 서버로, 멀티플레이어 게
 - [ ] 기본 게임 플레이 로직 완성
 - [ ] 많은 트래픽 + 멀티 리전 유저 혐동 플레이 고려 개선
 - [ ] 부하 테스트 및 성능 최적화
-- [ ] 로그 시스템 구축 (k8s pod 내에 같이 떠있는 에이전트가 게임서버의 로그를 수집하여 스트림으로 전송 -> 컨슈머 개념이 스트림에서 컨슘하여 가공 적재 과정이 1차 목표. 어떤 것을 사용할지 알아봐야 함)
+- [ ] 로그 시스템 구축 (Fluent Bit/Vector, kafka, ElasticSearch 목표 (공부용)) 
 - [ ] 모니터링 시스템 추가 (datadog - Infra Pro급에서 제공하는 리소스 상태 분석과 trace 기능이 너무 좋던데 비용을 봐야함)
-- [ ] CI/CD 자동화 구축 (gitops)
-- [ ] k8s helm, terraform
+- [ ] CI/CD 자동화 구축 (gitops (단편단편만 알아서 풀 코스 공부용))
+- [ ] k8s helm, terraform 목표 (공부용)
 - [ ] 어드민 (frontend 바이브코딩 목표)
-- [ ] AI github PR 리뷰 (궁금!)  
+- [ ] AI github PR 리뷰 (궁금!)
 
 
 ## 시작하기
