@@ -8,8 +8,11 @@
   "scripts": {
     "build:game": "nest build game-server && pnpm run proto:copy game-server",
     "build:rt": "nest build realtime-server && pnpm run proto:copy realtime-server",
+    "build:admin": "pnpm --filter admin-site build",
     "start:game:dev": "pnpm run proto:copy game-server && nest start game-server --debug --watch",
     "start:rt:dev": "pnpm run proto:copy realtime-server && nest start realtime-server --debug=9230 --watch",
+    "start:admin:dev": "pnpm --filter admin-site dev",
+    "start:admin": "pnpm --filter admin-site start",
     "migration:run:game": "npx typeorm-ts-node-commonjs migration:run -d packages/game-server/src/db/data-source.ts",
     "migration:gen:game": "npx typeorm-ts-node-commonjs migration:generate -d packages/game-server/src/db/data-source.ts packages/game-server/src/db/migrations/m",
     "migration:init:game": "typeorm migration:create packages/game-server/src/db/migrsations/migration",

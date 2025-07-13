@@ -16,6 +16,13 @@ Butterfly는 NestJS 기반의 실시간 게임 서버로, 멀티플레이어 게
   - 게임 룸 상태 동기화
   - 플레이어 간 통신
 
+- **admin-site** (포트 3002): Next.js 관리자 웹사이트 (frontend 만 있음. 바이브코딩 개발)
+  - 관리자 인증 및 권한 관리
+  - 사용자 조회 및 관리
+  - 게임 아이템 관리
+  - 랭킹 시스템 관리
+  - 사용자 행동 로그 모니터링
+
 - **common**: 공통 라이브러리
   - JWT 기반 인증
   - Redis 캐시 관리
@@ -36,11 +43,13 @@ Butterfly는 NestJS 기반의 실시간 게임 서버로, 멀티플레이어 게
 - 기본 게임 플레이 로직 구현 중
 - 매칭 알고리즘 개선 필요
 - 에러 처리 및 예외 상황 대응 강화
+- 관리자 사이트 백엔드 API 개발
 
 ### 🐛 알려진 문제점
 - 일부 테스트가 불안정함 
 - 기본 플레이 로직 확인단계로, 트래픽이나 초저지연 레이턴시를 위한 설계는 아직 고려되지 않음
 - WebSocket 연결 해제 시 정리 로직 미완성
+- Admin 백엔드 API 미구현
 
 ### 📋 TODO
 - [ ] 기본 게임 플레이 로직 완성
@@ -50,7 +59,7 @@ Butterfly는 NestJS 기반의 실시간 게임 서버로, 멀티플레이어 게
 - [ ] 모니터링 시스템 추가 (datadog - Infra Pro급에서 제공하는 리소스 상태 분석과 trace 기능이 너무 좋던데 비용을 봐야함)
 - [ ] CI/CD 자동화 구축 (gitops (단편단편만 알아서 풀 코스 공부용))
 - [ ] k8s helm, terraform 목표 (공부용)
-- [ ] 어드민 (frontend 바이브코딩 목표)
+- [ ] 어드민 (backend)
 - [ ] AI github PR 리뷰 (궁금!)
 
 
@@ -84,7 +93,18 @@ pnpm run start:game:dev
 
 # 터미널 2: realtime-server 시작 (WebSocket 서버)
 pnpm run start:rt:dev
+
+# 터미널 3: admin-site 시작 (관리자 웹사이트)
+pnpm run start:admin:dev
 ```
 
----
+### 5. 관리자 사이트 접속
+
+```
+http://localhost:3002
+
+(images/admin-fe-dashboard.png)
+```
+
+**참고**: 관리자 사이트는 현재 프론트엔드만 구현되어 있으며, 백엔드 API는 개발 예정입니다
 

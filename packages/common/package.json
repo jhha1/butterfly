@@ -1,0 +1,33 @@
+{
+  "name": "@packages/common",
+  "version": "0.0.1",
+  "description": "Common utilities and modules for Butterfly project",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.0.1",
+    "@nestjs/config": "^4.0.2",
+    "@nestjs/core": "^11.0.1",
+    "@nestjs/jwt": "^11.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "redis": "^5.5.6",
+    "typeorm": "^0.3.25",
+    "mysql2": "3.6.5",
+    "reflect-metadata": "^0.2.2"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^22.10.7",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^11.0.1",
+    "@nestjs/core": "^11.0.1"
+  }
+} 
