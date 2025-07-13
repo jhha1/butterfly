@@ -103,7 +103,7 @@ pnpm run start:admin:dev
 ```
 http://localhost:3002
 
-<img width="1614" height="750" alt="admin-fe-dashboard-ui" src="https://github.com/user-attachments/assets/0a4243e4-74d5-45a1-a8a6-dae1fa33602d" />
+![dashboard](https://github.com/user-attachments/assets/0a4243e4-74d5-45a1-a8a6-dae1fa33602d)
 
 ```
 
