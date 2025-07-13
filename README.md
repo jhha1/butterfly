@@ -103,7 +103,8 @@ pnpm run start:admin:dev
 ```
 http://localhost:3002
 
-![admin-fe-dashboard](/images/admin-fe-dashboard.png)
+<img width="1614" height="750" alt="admin-fe-dashboard-ui" src="https://github.com/user-attachments/assets/0a4243e4-74d5-45a1-a8a6-dae1fa33602d" />
+
 ```
 
 **참고**: 관리자 사이트는 현재 프론트엔드만 구현되어 있으며, 백엔드 API는 개발 예정입니다
