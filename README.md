@@ -103,7 +103,7 @@ pnpm run start:admin:dev
 ```
 http://localhost:3002
 
-(images/admin-fe-dashboard.png)
+![admin-fe-dashboard](/images/admin-fe-dashboard.png)
 ```
 
 **참고**: 관리자 사이트는 현재 프론트엔드만 구현되어 있으며, 백엔드 API는 개발 예정입니다
