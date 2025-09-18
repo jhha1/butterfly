@@ -4,10 +4,16 @@
   "sourceRoot": "src",
   "compilerOptions": {
     "deleteOutDir": true,
-    "webpack": true
+    "webpack": true,
+    "plugins": [
+      {
+        "name": "@nestjs/swagger/plugin",
+        "options": {
+          "classValidatorShim": true 
+        }
+      }
+    ]
   },
-  "monorepo": true,
-  "root": "packages/game-server",
   "projects": {
     "game-server": {
       "type": "application",

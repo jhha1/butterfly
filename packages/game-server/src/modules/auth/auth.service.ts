@@ -8,6 +8,7 @@ import { LoginResponseDto } from './dto/login-response.dto';
 import { GameErrorCode, GameException } from '../../common/exceptions/game.exception';
 import { PlayerService } from '../player/player.service';
 import { SessionService } from '../../../../common/src/auth/session/session.service';
+import { AuthPlatformMapStrToNum } from './constants/auth-platform.enum';
 
 @Injectable()
 export class AuthService {
@@ -20,11 +21,12 @@ export class AuthService {
 
   async login({ platformId, platformType }: LoginRequestDto): Promise<LoginResponseDto> {
 
-    if (!isValidPlatformType(platformType)) {
+    const platformCode = AuthPlatformMapStrToNum[platformType];
+    if (!isValidPlatformType(platformCode)) {
       throw new GameException(GameErrorCode.INVALID_PLATFORM_TYPE, 'InvalidPlatformType');
     }
 
-    let { account, isUnregistered } = await this.accountService.getOrCreateAccount(platformId, platformType);
+    let { account, isUnregistered } = await this.accountService.getOrCreateAccount(platformId, platformCode);
     if (isUnregistered) {
        throw new GameException(GameErrorCode.ACCOUNT_UNREGISTERED, 'UnregisterdUser');
     }
