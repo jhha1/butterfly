@@ -27,7 +27,12 @@ module.exports = {
   entry: './src/main.ts',
   target: 'node',
   mode: 'development',
-  devtool: 'inline-source-map',
+  devtool: 'source-map', 
+  output: {
+    path: join(__dirname, 'dist'),
+    filename: 'main.js',
+    sourceMapFilename: '*.map',
+  },
   externals: [nodeExternals()],
   module: {
     rules: [
@@ -39,14 +44,10 @@ module.exports = {
     ],
   },
   resolve: { extensions: ['.ts', '.js'] },
-  output: {
-    path: join(__dirname, 'dist'),
-    filename: 'main.js',
-  },
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
-        { from: join(__dirname, 'packages', 'outgame', 'src', 'grpc', 'proto'), to: join('grpc', 'proto') },
+        { from: join(__dirname, 'dist', 'grpc', 'proto'), to: join('grpc', 'proto') },
       ],
     }),
   ],

@@ -3,7 +3,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "sourceMap": true,
-   // "inlineSources": true, //  번들 안에 원본 TS 코드 포함
+    "inlineSources": true,
     "declaration": false,
     "moduleResolution": "node",
     "strict": true,

@@ -2,8 +2,22 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "declaration": false,
-    "outDir": "../../dist/packages/outgame"
+    "outDir": "dist",
+    "rootDir": "..",
+    "typeRoots": ["../../node_modules/@types"],
+    "experimentalDecorators": true, // swagger 설정. 메타데이터 내보내기
+    "emitDecoratorMetadata": true // swagger 설정. 메타데이터 내보내기
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "test", "**/*spec.ts"]
+  "include": [
+    "src/**/*",
+    "../common/src/**/*"
+  ],
+  "exclude": [
+    "node_modules", 
+    "dist", 
+    "test", 
+    "**/*spec.ts",
+    "../admin-site/**/*",
+    "../realtime-server/**/*"
+  ]
 }

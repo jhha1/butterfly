@@ -17,8 +17,8 @@ import { join } from 'path';
           options: {
             package: 'jhha.butterfly.v1',
             protoPath: [
-              join(process.cwd(), 'dist/packages/realtime-server/grpc/proto/base.proto'),
-              join(process.cwd(), 'dist/packages/realtime-server/grpc/proto/game/game.proto'),
+              join(process.cwd(), 'packages/realtime-server/dist/grpc/proto/base.proto'),
+              join(process.cwd(), 'packages/realtime-server/dist/grpc/proto/game/game.proto'),
             ],
             loader: {
               keepCase: false,
@@ -26,7 +26,7 @@ import { join } from 'path';
               enums: Number,
               defaults: true,
               oneofs: true,
-              includeDirs: [join(process.cwd(), 'dist/packages/realtime-server/grpc/proto')],
+              includeDirs: [join(process.cwd(), 'packages/realtime-server/dist/grpc/proto')],
             },
             url: configService.get<string>('INGAME_GRPC_URL', '0.0.0.0:50052'),
             // HTTP/2 keepalive 설정

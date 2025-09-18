@@ -10,7 +10,7 @@ service IngameService {
   rpc GetRoomInfo(GetRoomInfoRequest) returns (GetRoomInfoResponse);
 }
 
-// outgame 서버에서 제공하는 서비스 (ingame에서 호출)
+// game 서버에서 제공하는 서비스 (ingame에서 호출)
 service OutgameService {
   rpc GameResult(GameResultRequest) returns (GameResultResponse);
 }

@@ -345,7 +345,7 @@ export class ${moduleMemberName} {}`;
 }
 
 // 메인 함수
-function generateCodeFromProto(protoPath, outputDir = 'packages/outgame/src/modules') {
+function generateCodeFromProto(protoPath, outputDir = 'packages/game-server/src/modules') {
   if (!fs.existsSync(protoPath)) {
     throw new Error(`Proto file not found: ${protoPath}`);
   }

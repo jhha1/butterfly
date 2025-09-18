@@ -39,7 +39,7 @@ jobs:
           rm -rf idl/*
 
           # 빌드된 proto 복사
-          cp -R dist/packages/outgame/grpc/proto/* idl/
+          cp -R packages/game-server/dist/grpc/proto/* idl/
 
           cd idl
           git checkout -B game-dev

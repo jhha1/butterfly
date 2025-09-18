@@ -28,13 +28,18 @@ module.exports = {
   entry: './src/main.ts',
   target: 'node',
   mode: 'development',
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   externals: [nodeExternals()],
   module: {
     rules: [
       {
         test: /\.ts$/,
-        use: 'ts-loader',
+        use: {
+          loader: 'ts-loader',
+          options: {
+            configFile: join(__dirname, 'tsconfig.app.json'),
+          },
+        },
         exclude: /node_modules/,
       },
     ],
@@ -48,8 +53,9 @@ module.exports = {
     }
   },
   output: {
-    path: join(__dirname, '..', '..', 'dist', 'packages', 'outgame'),
+    path: join(__dirname, 'dist'),
     filename: 'main.js',
+    sourceMapFilename: '*.map',
   },
   plugins: [
     new CopyWebpackPlugin({

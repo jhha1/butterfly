@@ -11,4 +11,4 @@ RUN pnpm run build:game
 COPY --from=builder /usr/src/app/dist ./dist
 COPY --from=builder /usr/src/app/node_modules ./node_modules
 
-CMD ["node", "dist/packages/outgame/main.js"]
+CMD ["node", "packages/game-server/dist/main.js"]
