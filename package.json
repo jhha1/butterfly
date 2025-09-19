@@ -20,9 +20,9 @@
     "start:admin": "pnpm --filter admin-site dev",
     "start:admin:prod": "pnpm --filter admin-site start",
     
-    "migration:run:game": "npx typeorm-ts-node-commonjs migration:run -d packages/game-server/src/db/data-source.ts",
-    "migration:gen:game": "npx typeorm-ts-node-commonjs migration:generate -d packages/game-server/src/db/data-source.ts packages/game-server/src/db/migrations/m",
-    "migration:init:game": "typeorm migration:create packages/game-server/src/db/migrsations/migration",
+    "migration:run:game": "npx typeorm-ts-node-commonjs migration:run -d packages/game-server/src/datasource/db/data-source.ts",
+    "migration:gen:game": "npx typeorm-ts-node-commonjs migration:generate -d packages/game-server/src/datasource/db/data-source.ts packages/game-server/src/db/migrations/m",
+    "migration:init:game": "typeorm migration:create packages/game-server/src/datasource/db/migrsations/migration",
     
     "test": "jest",
     "test:watch": "jest --watch",
