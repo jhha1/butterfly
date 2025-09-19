@@ -89,7 +89,7 @@ pnpm migration:run:game
 # 터미널 1: realtime-server 시작 (WebSocket 서버)
 pnpm start:rt
 
-# 터미널 2: game-server 시작 (gRPC 서버)
+# 터미널 2: game-server 시작 (HTTPS 서버)
 pnpm start:game
 
 # 터미널 3: admin-site 시작 (관리자 웹사이트)
