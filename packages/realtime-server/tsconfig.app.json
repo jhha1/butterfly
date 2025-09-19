@@ -2,8 +2,16 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "declaration": false,
-    "outDir": "dist"
+    "outDir": "./dist",
+    "rootDir": "./src",
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "test", "**/*spec.ts", "packages/game-server", "packages/admin-site"]
+  "exclude": [
+    "node_modules", 
+    "dist", 
+    "test", 
+    "**/*spec.ts", 
+    "packages/game-server", 
+    "packages/admin-site"
+  ]
 }

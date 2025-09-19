@@ -9,7 +9,7 @@
       {
         "name": "@nestjs/swagger/plugin",
         "options": {
-          "classValidatorShim": true 
+          "classValidatorShim": true
         }
       }
     ]
@@ -22,8 +22,15 @@
       "sourceRoot": "packages/game-server/src",
       "compilerOptions": {
         "tsConfigPath": "packages/game-server/tsconfig.app.json",
-        "webpack": true,
-        "webpackConfigPath": "packages/game-server/webpack.config.js"
+        "webpack": false,
+        "deleteOutDir": true,
+        "assets": [
+          {
+            "include": "packages/game-server/src/grpc/proto",
+            "outDir": "packages/game-server/dist/grpc/proto"
+          }
+        ],
+        "watchAssets": true
       }
     },
     "realtime-server": {
@@ -33,8 +40,16 @@
       "sourceRoot": "packages/realtime-server/src",
       "compilerOptions": {
         "tsConfigPath": "packages/realtime-server/tsconfig.app.json",
-        "webpack": true,
-        "webpackConfigPath": "packages/realtime-server/webpack.config.js"
+        "webpack": false,
+        "webpackPath": "packages/realtime-server/webpack.config.js",
+        "deleteOutDir": true,
+        "assets": [
+          {
+            "include": "src/grpc/proto/**/*.proto",
+            "outDir": "dist/grpc/proto"
+          }
+        ],
+        "watchAssets": true
       }
     }
   }

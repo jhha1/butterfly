@@ -1,7 +1,6 @@
-const webpack = require('webpack');
 const { join } = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const nodeExternals = require('webpack-node-externals');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 /*
   webpack - nestJs 서버 번들링 + 빌드 과정 커스터마이징
@@ -22,41 +21,37 @@ const nodeExternals = require('webpack-node-externals');
   esbuild / SWC 기반 번들러: 빌드 속도 빠른게 제일 중요할 경우. 속도가 빠르다고 함
   Nx esbuild: Nx Monorepo 쓰는경우, 모노리포 캐시최적화와 연동. 본인은 Nx 선택 안해서 패스.
 */
-
-module.exports = {
-  context: __dirname,
-  entry: './src/main.ts',
+const config = {
+  mode: 'production',          // dev 디버깅 시 'development'로
   target: 'node',
-  mode: 'development',
-  devtool: 'source-map',
-  externals: [nodeExternals()],
+  context: __dirname,          // 앱 디렉토리 기준
+  entry: join(__dirname, 'src/main.ts'),
+  output: {
+    path: join(__dirname, 'dist'),
+    filename: 'main.js',
+    // VSCode 브포 바인딩 안정화
+    devtoolModuleFilenameTemplate: (info) =>
+      'file:///' + info.absoluteResourcePath.replace(/\\/g, '/'),
+  },
+  resolve: { 
+    extensions: ['.ts', '.js'],
+    plugins: [
+      new TsconfigPathsPlugin({
+        configFile: join(__dirname, 'tsconfig.app.json'),
+      }),
+    ],
+   },
   module: {
     rules: [
       {
         test: /\.ts$/,
-        use: {
-          loader: 'ts-loader',
-          options: {
-            configFile: join(__dirname, 'tsconfig.app.json'),
-          },
-        },
-        exclude: /node_modules/,
-      },
-    ],
+        loader: 'ts-loader',
+        options: { transpileOnly: false }
+      }
+    ]
   },
-  resolve: { 
-    extensions: ['.ts', '.js'],
-    alias: {
-      '@packages/common': join(__dirname, '..', 'common', 'src'),
-      '@packages/game-server': join(__dirname, 'src'),
-      '@packages/realtime-server': join(__dirname, '..', 'realtime-server', 'src'),
-    }
-  },
-  output: {
-    path: join(__dirname, 'dist'),
-    filename: 'main.js',
-    sourceMapFilename: '*.map',
-  },
+  optimization: { minimize: true }, // 프로덕션
+  devtool: 'source-map',
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
@@ -65,6 +60,8 @@ module.exports = {
     }),
   ],
 };
+
+module.exports = config;
 
 // module.exports = (config, options) => {
 //   // Source map 활성화 (디버깅용)

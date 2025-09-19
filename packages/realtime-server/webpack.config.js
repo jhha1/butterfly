@@ -1,14 +1,23 @@
-const webpack = require('webpack');
-const { join } = require('path');
+
+const { join } = require('node:path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 
-module.exports = {
-  context: __dirname,
-  entry: './src/main.ts',
+const config = {
+  mode: 'production',          // dev 디버깅 시 'development'로
   target: 'node',
-  mode: 'development',
-  devtool: 'source-map',
+  context: __dirname,          // 앱 디렉토리 기준
+  entry: join(__dirname, 'src/main.ts'),
+  output: {
+    path: join(__dirname, 'dist'),
+    filename: 'main.js',
+    // VSCode 브포 바인딩 안정화
+    devtoolModuleFilenameTemplate: (info) =>
+      'file:///' + info.absoluteResourcePath.replace(/\\/g, '/'),
+  },
+  resolve: { 
+    extensions: ['.ts', '.js']
+  },
   externals: [nodeExternals()],
   module: {
     rules: [
@@ -16,27 +25,15 @@ module.exports = {
         test: /\.ts$/,
         use: {
           loader: 'ts-loader',
-          options: {
+          options: { 
             configFile: join(__dirname, 'tsconfig.app.json'),
-          },
-        },
-        exclude: /node_modules/,
-      },
-    ],
+          }
+        }
+      }
+    ]
   },
-  resolve: { 
-    extensions: ['.ts', '.js'],
-    alias: {
-      '@packages/common': join(__dirname, '..', 'common', 'src'),
-      '@packages/game-server': join(__dirname, '..', 'game-server', 'src'),
-      '@packages/realtime-server': join(__dirname, 'src'),
-    }
-  },
-  output: {
-    path: join(__dirname, 'dist'),
-    filename: 'main.js',
-    sourceMapFilename: '*.map',
-  },
+  optimization: { minimize: true }, // 프로덕션
+  devtool: 'source-map',
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
@@ -44,4 +41,6 @@ module.exports = {
       ],
     }),
   ],
-}; 
+};
+
+module.exports = config;

@@ -5,17 +5,20 @@
     "sourceMap": true,
     "inlineSources": true,
     "declaration": false,
-    "moduleResolution": "node",
+    "moduleResolution": "node", // ts가 import한 모듈을 어떻게 찾을지. node는 node_modules 기반으로 찾는다.
     "strict": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true, // 런타임에서 데코레이터 타입 메타데이터 추가 내보내기 (@Body dto: LoginDto -> DTO 타입 정보를 Reflect 메타데이터로 기록). Swagger가 이걸읽어 API 문서 생성.
+    "experimentalDecorators": true, // 데코레이터 문법 (@Injectable..) 허용 (nestjs 필수)
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2021", // tsc 빌드 대상 js 버전 (node 16 이상이면 es2021는 문제 없다고 함)
     "lib": ["es2022", "dom"],
-    "skipLibCheck": true,
+    "skipLibCheck": true, // 라이브러리 검사 건너뛰기 (빌드속도 향상)
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "module": "commonjs",
+    "module": "commonjs", // 트랜스파일된 js에서 모듈시스템 뭘쓸지 (commonjs - require/module.exports 기반, exnext - import/export 기반). nestJs는 아직 commonjs 기반으로 굴러가는게 많다고 함
+    "forceConsistentCasingInFileNames": true, // 파일 이름의 대소문자 불일치 있으면 에러 (windows,mac은 대소문자 구분 느슨. linux는 구분 엄격해서 미리 버그 막기)
+    "resolveJsonModule": true, // .json 파일을 import config from './config.json' 처럼 import 할 수 있게 해준다.
+    "esModuleInterop": true, // commonjs 모듈을 import 문법으로 불러올 수 있게 한다. (import * as fs from 'fs' -> import fs from 'fs')
     "paths": {
       "@packages/common": [
         "packages/common/src"

@@ -2,22 +2,18 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "declaration": false,
-    "outDir": "dist",
-    "rootDir": "..",
-    "typeRoots": ["../../node_modules/@types"],
-    "experimentalDecorators": true, // swagger 설정. 메타데이터 내보내기
-    "emitDecoratorMetadata": true // swagger 설정. 메타데이터 내보내기
+    "outDir": "./dist",
+    "rootDir": "./src",
   },
   "include": [
-    "src/**/*",
-    "../common/src/**/*"
+    "src/**/*.ts",
   ],
   "exclude": [
     "node_modules", 
     "dist", 
     "test", 
     "**/*spec.ts",
-    "../admin-site/**/*",
-    "../realtime-server/**/*"
+    "packages/realtime-server",
+    "packages/admin-site"
   ]
 }

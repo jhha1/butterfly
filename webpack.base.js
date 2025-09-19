@@ -31,7 +31,8 @@ module.exports = {
   output: {
     path: join(__dirname, 'dist'),
     filename: 'main.js',
-    sourceMapFilename: '*.map',
+    devtoolModuleFilenameTemplate: (info) =>
+      'file:///' + info.absoluteResourcePath.replace(/\\/g, '/'),
   },
   externals: [nodeExternals()],
   module: {
