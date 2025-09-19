@@ -42,7 +42,7 @@
         "tsConfigPath": "packages/realtime-server/tsconfig.app.json",
         "webpack": false, // 웹팩빌드 사용 여부
         "webpackPath": "packages/realtime-server/webpack.config.js", // 웹팩 설정파일 경로
-        "deleteOutDir": true, // dist를 지워도 OK (아래 assets로 다시 채움)
+        "deleteOutDir": false, // dist를 지워도 OK (아래 assets로 다시 채움)
         "assets": [
           {
             "include": "src/grpc/proto/**/*.proto",

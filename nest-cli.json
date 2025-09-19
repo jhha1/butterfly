@@ -42,7 +42,7 @@
         "tsConfigPath": "packages/realtime-server/tsconfig.app.json",
         "webpack": false,
         "webpackPath": "packages/realtime-server/webpack.config.js",
-        "deleteOutDir": true,
+        "deleteOutDir": false,
         "assets": [
           {
             "include": "src/grpc/proto/**/*.proto",
