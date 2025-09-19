@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { PlayerService } from './player.service';
 import { PlayerController } from './player.controller';
-import { RedisCacheModule, DbModule } from '../../../../common/src/datasource';
+import { RedisCacheModule, DbModule } from '../../datasource';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PlayerEntities } from './entities';
 

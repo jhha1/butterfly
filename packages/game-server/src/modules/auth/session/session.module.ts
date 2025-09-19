@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { SessionService } from './session.service';
-import { RedisCacheModule } from '../../datasource';
+import { RedisCacheModule } from '../../../datasource';
 
 @Module({
   imports: [RedisCacheModule],

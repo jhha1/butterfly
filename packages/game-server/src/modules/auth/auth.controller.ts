@@ -13,6 +13,7 @@ import { AuthPlatformCode, AuthPlatformStr } from './constants/auth-platform.enu
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  @Public()
   @Post('login')
   @ApiOperation({ summary: '로그인' })
   @ApiBody({ 

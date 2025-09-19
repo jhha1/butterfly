@@ -1,5 +1,5 @@
 import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
-import { SessionService } from '../../../../common/src/auth/session/session.service';
+import { SessionService } from '../../modules/auth/session/session.service';
 import { Metadata } from '@grpc/grpc-js';
 import { Reflector } from '@nestjs/core';
 import { IS_PUBLIC_KEY } from '../decorators/public.decorator';

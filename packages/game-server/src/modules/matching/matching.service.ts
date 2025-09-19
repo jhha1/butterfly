@@ -6,7 +6,7 @@ import { RequestMatchResponseDto } from './dto/requestmatchresponse.dto';
 import { AcceptMatchRequestDto } from './dto/acceptmatchrequest.dto';
 import { AcceptMatchResponseDto } from './dto/acceptmatchresponse.dto';
 import { ClientService } from '../../grpc/client/client.service';
-import { RedisCacheService } from '@packages/common/datasource/redis/src/redis.service';
+import { RedisCacheService } from '@packages/game-server/datasource/redis/redis.service';
 
 @Injectable()
 export class MatchingService {

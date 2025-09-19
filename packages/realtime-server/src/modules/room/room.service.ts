@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { GameRoom, Player, GameResult } from '../../types/game.types';
 import { ClientService } from '../client/client.service';
-import { RedisCacheService } from '@packages/common/datasource/redis/src/redis.service';
+import { RedisCacheService } from '../../datasource';
 
 @Injectable()
 export class RoomService {

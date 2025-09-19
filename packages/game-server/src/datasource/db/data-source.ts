@@ -1,9 +1,9 @@
 import { DataSource } from 'typeorm';
 import { resolve } from 'path';
 import { config as loadEnv } from 'dotenv';
-import { Account } from '../modules/auth/entities/account.entity';
-import { Platform } from '../modules/auth/entities/platform.entity';
-import { Player } from '../modules/player/entities/player.entity';
+import { Account } from '../../modules/auth/entities/account.entity';
+import { Platform } from '../../modules/auth/entities/platform.entity';
+import { Player } from '../../modules/player/entities/player.entity';
 
 // 로컬 환경에서 마이그레이션 파일 생성시 참조용
 loadEnv({ path: resolve(process.cwd(), '.env') });

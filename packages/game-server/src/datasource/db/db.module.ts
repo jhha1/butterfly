@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { buildTypeOrmConfig } from '../../../../game-server/src/db/db.utils';
+import { buildTypeOrmConfig } from './db.utils';
 import { resolve } from 'path';
 
 @Module({

@@ -5,7 +5,7 @@ import { ClientModule } from './modules/client/client.module';
 import { PlayModule } from './modules/play/play.module';
 import { RoomModule } from './modules/room/room.module';
 import { GatewayModule } from './modules/gateway/gateway.module';
-import { RedisCacheModule } from '@packages/common/datasource/redis/src/redis.module';
+import { RedisCacheModule } from './datasource';
 
 @Module({
   imports: [

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { RedisCacheService } from '@packages/common/datasource/';
+import { RedisCacheService } from '@packages/game-server/datasource';
 import { LobbyRefreshRequestDto } from './dto/lobby-refresh-request.dto';
 import { LobbyRefreshResponseDto } from './dto/lobby-refresh-response.dto';
 

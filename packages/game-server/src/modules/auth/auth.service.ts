@@ -7,7 +7,7 @@ import { LoginRequestDto, isValidPlatformType } from './dto/login-request.dto';
 import { LoginResponseDto } from './dto/login-response.dto';
 import { GameErrorCode, GameException } from '../../common/exceptions/game.exception';
 import { PlayerService } from '../player/player.service';
-import { SessionService } from '../../../../common/src/auth/session/session.service';
+import { SessionService } from './session/session.service';
 import { AuthPlatformMapStrToNum } from './constants/auth-platform.enum';
 
 @Injectable()
