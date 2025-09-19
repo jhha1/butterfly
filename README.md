@@ -80,20 +80,20 @@ docker-compose -f environments/local/docker-compose.yml up -d
 
 ```bash
 # 마이그레이션 실행
-pnpm run migration:run:game
+pnpm migration:run:game
 ```
 
 ### 4. 서버 실행
 
 ```bash
 # 터미널 1: realtime-server 시작 (WebSocket 서버)
-pnpm run start:rt
+pnpm start:rt
 
 # 터미널 2: game-server 시작 (gRPC 서버)
-pnpm run start:game
+pnpm start:game
 
 # 터미널 3: admin-site 시작 (관리자 웹사이트)
-pnpm run start:admin:dev
+pnpm start:admin
 ```
 
 ### 5. 관리자 사이트 접속
