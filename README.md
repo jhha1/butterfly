@@ -6,7 +6,7 @@ Butterfly는 NestJS 기반의 실시간 게임 서버로, 멀티플레이어 게
 
 ### 서비스 구성 (Monorepo)
 
-- **game-server**: gRPC 서버 (추후 클라이언트와 통신방식을 restful api로 변경 예정. body 포맷만 protobuf 사용예정)
+- **game-server**: HTTP 서버 
   - 사용자 인증 및 로그인
   - 로비 관리 및 플레이어 매칭
   - 게임 룸 생성 및 관리
@@ -23,10 +23,8 @@ Butterfly는 NestJS 기반의 실시간 게임 서버로, 멀티플레이어 게
   - 랭킹 시스템 관리
   - 사용자 행동 로그 모니터링
 
-- **common**: 공통 라이브러리
+- **common**: 공통 라이브러리 (삭제예정)
   - JWT 기반 인증
-  - Redis 캐시 관리
-  - 데이터베이스 연결
 
 ### 데이터 저장소
 
@@ -35,7 +33,7 @@ Butterfly는 NestJS 기반의 실시간 게임 서버로, 멀티플레이어 게
 
 ### MSA 
 - **game-server** 와 **realtime-server** 는 별도로 떠있으며, 추후 MSA로 구성해보고자 함. Service Mesh와 Istio에 대해 알아보자 (공부목적)
-- grpc 통신 (현재 unary 방식이라 streaming으로 변경해야함) 
+- 서버간 통신은 GRPC (현재 unary 방식이라 streaming으로 변경해야함) 
 
 ## ⚠️ 현재 상태 및 알려진 이슈
 
@@ -88,11 +86,11 @@ pnpm run migration:run:game
 ### 4. 서버 실행
 
 ```bash
-# 터미널 1: game-server 시작 (gRPC 서버)
-pnpm run start:game:dev
+# 터미널 1: realtime-server 시작 (WebSocket 서버)
+pnpm run start:rt
 
-# 터미널 2: realtime-server 시작 (WebSocket 서버)
-pnpm run start:rt:dev
+# 터미널 2: game-server 시작 (gRPC 서버)
+pnpm run start:game
 
 # 터미널 3: admin-site 시작 (관리자 웹사이트)
 pnpm run start:admin:dev
