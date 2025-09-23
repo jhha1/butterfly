@@ -1,6 +1,7 @@
 # Butterfly
 
 Butterfly는 NestJS 기반의 실시간 게임 서버로, 멀티플레이어 게임을 위한 로비, 매칭, 실시간 플레이 기능을 만들고 있습니다.
+현재 개발중입니다.
 
 ## 시스템 아키텍처
 
@@ -11,7 +12,7 @@ Butterfly는 NestJS 기반의 실시간 게임 서버로, 멀티플레이어 게
   - 로비 관리 및 플레이어 매칭
   - 게임 룸 생성 및 관리
 
-- **realtime-server** : WebSocket 서버
+- **realtime-server** : WebSocket 서버 (game-server와 gRPC 통신)
   - 실시간 게임 플레이
   - 게임 룸 상태 동기화
   - 플레이어 간 통신
